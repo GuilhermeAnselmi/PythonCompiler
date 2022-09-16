@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pgbStatus = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ckbNoConsole = new System.Windows.Forms.CheckBox();
             this.ckbClearCache = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdbZip = new System.Windows.Forms.RadioButton();
+            this.rdbSingleFile = new System.Windows.Forms.RadioButton();
+            this.rdbDll = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.btnManifest = new System.Windows.Forms.Button();
             this.txtManifest = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtVersion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLocalSave = new System.Windows.Forms.Button();
@@ -62,15 +63,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.pgbStatus);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnManifest);
             this.panel1.Controls.Add(this.txtManifest);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtVersion);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnLocalSave);
@@ -82,8 +84,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(491, 371);
+            this.panel1.Size = new System.Drawing.Size(491, 404);
             this.panel1.TabIndex = 0;
+            // 
+            // pgbStatus
+            // 
+            this.pgbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pgbStatus.Location = new System.Drawing.Point(12, 369);
+            this.pgbStatus.Name = "pgbStatus";
+            this.pgbStatus.Size = new System.Drawing.Size(467, 23);
+            this.pgbStatus.Step = 1;
+            this.pgbStatus.TabIndex = 24;
             // 
             // groupBox2
             // 
@@ -104,7 +116,7 @@
             this.ckbNoConsole.Location = new System.Drawing.Point(6, 49);
             this.ckbNoConsole.Name = "ckbNoConsole";
             this.ckbNoConsole.Size = new System.Drawing.Size(153, 19);
-            this.ckbNoConsole.TabIndex = 8;
+            this.ckbNoConsole.TabIndex = 10;
             this.ckbNoConsole.Text = "Executavel sem Console";
             this.ckbNoConsole.UseVisualStyleBackColor = true;
             // 
@@ -115,16 +127,16 @@
             this.ckbClearCache.Location = new System.Drawing.Point(6, 24);
             this.ckbClearCache.Name = "ckbClearCache";
             this.ckbClearCache.Size = new System.Drawing.Size(97, 19);
-            this.ckbClearCache.TabIndex = 7;
+            this.ckbClearCache.TabIndex = 9;
             this.ckbClearCache.Text = "Limpar cache";
             this.ckbClearCache.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rdbZip);
+            this.groupBox1.Controls.Add(this.rdbSingleFile);
+            this.groupBox1.Controls.Add(this.rdbDll);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(279, 218);
             this.groupBox1.Name = "groupBox1";
@@ -133,46 +145,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Compilação";
             // 
-            // radioButton3
+            // rdbZip
             // 
-            this.radioButton3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rdbZip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.ForeColor = System.Drawing.Color.White;
-            this.radioButton3.Location = new System.Drawing.Point(6, 73);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(118, 19);
-            this.radioButton3.TabIndex = 18;
-            this.radioButton3.Text = "Gerar Arquivo ZIP";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rdbZip.AutoSize = true;
+            this.rdbZip.ForeColor = System.Drawing.Color.White;
+            this.rdbZip.Location = new System.Drawing.Point(6, 73);
+            this.rdbZip.Name = "rdbZip";
+            this.rdbZip.Size = new System.Drawing.Size(118, 19);
+            this.rdbZip.TabIndex = 13;
+            this.rdbZip.Text = "Gerar Arquivo ZIP";
+            this.rdbZip.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdbSingleFile
             // 
-            this.radioButton2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rdbSingleFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.ForeColor = System.Drawing.Color.White;
-            this.radioButton2.Location = new System.Drawing.Point(6, 48);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(132, 19);
-            this.radioButton2.TabIndex = 17;
-            this.radioButton2.Text = "Gerar Arquivo Unico";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdbSingleFile.AutoSize = true;
+            this.rdbSingleFile.ForeColor = System.Drawing.Color.White;
+            this.rdbSingleFile.Location = new System.Drawing.Point(6, 48);
+            this.rdbSingleFile.Name = "rdbSingleFile";
+            this.rdbSingleFile.Size = new System.Drawing.Size(132, 19);
+            this.rdbSingleFile.TabIndex = 12;
+            this.rdbSingleFile.Text = "Gerar Arquivo Unico";
+            this.rdbSingleFile.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdbDll
             // 
-            this.radioButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rdbDll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.ForeColor = System.Drawing.Color.White;
-            this.radioButton1.Location = new System.Drawing.Point(6, 23);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(84, 19);
-            this.radioButton1.TabIndex = 16;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Gerar DLL\'s";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdbDll.AutoSize = true;
+            this.rdbDll.Checked = true;
+            this.rdbDll.ForeColor = System.Drawing.Color.White;
+            this.rdbDll.Location = new System.Drawing.Point(6, 23);
+            this.rdbDll.Name = "rdbDll";
+            this.rdbDll.Size = new System.Drawing.Size(84, 19);
+            this.rdbDll.TabIndex = 11;
+            this.rdbDll.TabStop = true;
+            this.rdbDll.Text = "Gerar DLL\'s";
+            this.rdbDll.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -193,7 +205,7 @@
             this.btnManifest.Name = "btnManifest";
             this.btnManifest.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnManifest.Size = new System.Drawing.Size(24, 23);
-            this.btnManifest.TabIndex = 20;
+            this.btnManifest.TabIndex = 8;
             this.btnManifest.Text = "...";
             this.btnManifest.UseVisualStyleBackColor = true;
             this.btnManifest.Click += new System.EventHandler(this.SearchManifest);
@@ -205,7 +217,7 @@
             this.txtManifest.Location = new System.Drawing.Point(12, 186);
             this.txtManifest.Name = "txtManifest";
             this.txtManifest.Size = new System.Drawing.Size(437, 23);
-            this.txtManifest.TabIndex = 19;
+            this.txtManifest.TabIndex = 7;
             // 
             // label4
             // 
@@ -218,14 +230,14 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "Versão (Não Obrigatório)";
             // 
-            // textBox2
+            // txtVersion
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(293, 133);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "1.0.0";
-            this.textBox2.Size = new System.Drawing.Size(186, 23);
-            this.textBox2.TabIndex = 17;
+            this.txtVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVersion.Location = new System.Drawing.Point(293, 133);
+            this.txtVersion.Name = "txtVersion";
+            this.txtVersion.PlaceholderText = "1.0.0";
+            this.txtVersion.Size = new System.Drawing.Size(186, 23);
+            this.txtVersion.TabIndex = 6;
             // 
             // label3
             // 
@@ -237,13 +249,13 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Nome Compilado (Sem Extensão)";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "Python Compile";
-            this.textBox1.Size = new System.Drawing.Size(186, 23);
-            this.textBox1.TabIndex = 14;
+            this.txtName.Location = new System.Drawing.Point(12, 133);
+            this.txtName.Name = "txtName";
+            this.txtName.PlaceholderText = "Python Compile";
+            this.txtName.Size = new System.Drawing.Size(186, 23);
+            this.txtName.TabIndex = 5;
             // 
             // label2
             // 
@@ -276,7 +288,7 @@
             this.btnLocalSave.Name = "btnLocalSave";
             this.btnLocalSave.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnLocalSave.Size = new System.Drawing.Size(24, 23);
-            this.btnLocalSave.TabIndex = 7;
+            this.btnLocalSave.TabIndex = 4;
             this.btnLocalSave.Text = "...";
             this.btnLocalSave.UseVisualStyleBackColor = true;
             this.btnLocalSave.Click += new System.EventHandler(this.SearchLocalSave);
@@ -288,28 +300,30 @@
             this.txtLocalSave.Location = new System.Drawing.Point(12, 81);
             this.txtLocalSave.Name = "txtLocalSave";
             this.txtLocalSave.Size = new System.Drawing.Size(437, 23);
-            this.txtLocalSave.TabIndex = 6;
+            this.txtLocalSave.TabIndex = 3;
             this.txtLocalSave.Text = "C:\\PythonCompile";
             // 
             // btnOpenLocalCompile
             // 
             this.btnOpenLocalCompile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnOpenLocalCompile.Location = new System.Drawing.Point(12, 336);
+            this.btnOpenLocalCompile.Location = new System.Drawing.Point(12, 340);
             this.btnOpenLocalCompile.Name = "btnOpenLocalCompile";
             this.btnOpenLocalCompile.Size = new System.Drawing.Size(171, 23);
-            this.btnOpenLocalCompile.TabIndex = 4;
+            this.btnOpenLocalCompile.TabIndex = 14;
             this.btnOpenLocalCompile.Text = "Abrir Pasta da Compilação";
             this.btnOpenLocalCompile.UseVisualStyleBackColor = true;
+            this.btnOpenLocalCompile.Click += new System.EventHandler(this.OpenSavePath);
             // 
             // btnCompile
             // 
             this.btnCompile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompile.Location = new System.Drawing.Point(404, 336);
+            this.btnCompile.Location = new System.Drawing.Point(404, 340);
             this.btnCompile.Name = "btnCompile";
             this.btnCompile.Size = new System.Drawing.Size(75, 23);
-            this.btnCompile.TabIndex = 2;
+            this.btnCompile.TabIndex = 15;
             this.btnCompile.Text = "Compilar";
             this.btnCompile.UseVisualStyleBackColor = true;
+            this.btnCompile.Click += new System.EventHandler(this.Compile);
             // 
             // txtPath
             // 
@@ -328,7 +342,7 @@
             this.btnPath.Name = "btnPath";
             this.btnPath.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnPath.Size = new System.Drawing.Size(24, 23);
-            this.btnPath.TabIndex = 0;
+            this.btnPath.TabIndex = 2;
             this.btnPath.Text = "...";
             this.btnPath.UseVisualStyleBackColor = true;
             this.btnPath.Click += new System.EventHandler(this.SearchFile);
@@ -337,9 +351,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 371);
+            this.ClientSize = new System.Drawing.Size(491, 404);
             this.Controls.Add(this.panel1);
-            this.MinimumSize = new System.Drawing.Size(507, 410);
+            this.MinimumSize = new System.Drawing.Size(507, 443);
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "Python Compile";
@@ -367,19 +381,20 @@
         private Label label1;
         private FolderBrowserDialog openFolderSave;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtName;
         private Label label4;
-        private TextBox textBox2;
+        private TextBox txtVersion;
         private Label label5;
         private Button btnManifest;
         private TextBox txtManifest;
         private GroupBox groupBox1;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton rdbZip;
+        private RadioButton rdbSingleFile;
+        private RadioButton rdbDll;
         private GroupBox groupBox2;
         private CheckBox ckbNoConsole;
         private CheckBox ckbClearCache;
         private OpenFileDialog openFileManifest;
+        private ProgressBar pgbStatus;
     }
 }
