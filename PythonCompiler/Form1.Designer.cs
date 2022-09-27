@@ -29,19 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbOpenAdmin = new System.Windows.Forms.CheckBox();
             this.pgbStatus = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ckbNoConsole = new System.Windows.Forms.CheckBox();
             this.ckbClearCache = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbZip = new System.Windows.Forms.RadioButton();
             this.rdbSingleFile = new System.Windows.Forms.RadioButton();
             this.rdbDll = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
             this.btnManifest = new System.Windows.Forms.Button();
             this.txtManifest = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtVersion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,14 +61,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.ckbOpenAdmin);
             this.panel1.Controls.Add(this.pgbStatus);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnManifest);
             this.panel1.Controls.Add(this.txtManifest);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtVersion);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label2);
@@ -87,6 +84,18 @@
             this.panel1.Size = new System.Drawing.Size(491, 404);
             this.panel1.TabIndex = 0;
             // 
+            // ckbOpenAdmin
+            // 
+            this.ckbOpenAdmin.AutoSize = true;
+            this.ckbOpenAdmin.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ckbOpenAdmin.Location = new System.Drawing.Point(12, 215);
+            this.ckbOpenAdmin.Name = "ckbOpenAdmin";
+            this.ckbOpenAdmin.Size = new System.Drawing.Size(205, 19);
+            this.ckbOpenAdmin.TabIndex = 8;
+            this.ckbOpenAdmin.Text = "Gerar Manifesto de Administrador";
+            this.ckbOpenAdmin.UseVisualStyleBackColor = true;
+            this.ckbOpenAdmin.CheckedChanged += new System.EventHandler(this.ManifestAdmin);
+            // 
             // pgbStatus
             // 
             this.pgbStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -102,7 +111,7 @@
             this.groupBox2.Controls.Add(this.ckbNoConsole);
             this.groupBox2.Controls.Add(this.ckbClearCache);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(12, 218);
+            this.groupBox2.Location = new System.Drawing.Point(12, 240);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 76);
             this.groupBox2.TabIndex = 23;
@@ -134,29 +143,15 @@
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.rdbZip);
             this.groupBox1.Controls.Add(this.rdbSingleFile);
             this.groupBox1.Controls.Add(this.rdbDll);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(279, 218);
+            this.groupBox1.Location = new System.Drawing.Point(279, 240);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Size = new System.Drawing.Size(200, 76);
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tipo de Compilação";
-            // 
-            // rdbZip
-            // 
-            this.rdbZip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.rdbZip.AutoSize = true;
-            this.rdbZip.ForeColor = System.Drawing.Color.White;
-            this.rdbZip.Location = new System.Drawing.Point(6, 73);
-            this.rdbZip.Name = "rdbZip";
-            this.rdbZip.Size = new System.Drawing.Size(118, 19);
-            this.rdbZip.TabIndex = 13;
-            this.rdbZip.Text = "Gerar Arquivo ZIP";
-            this.rdbZip.UseVisualStyleBackColor = true;
             // 
             // rdbSingleFile
             // 
@@ -205,7 +200,7 @@
             this.btnManifest.Name = "btnManifest";
             this.btnManifest.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnManifest.Size = new System.Drawing.Size(24, 23);
-            this.btnManifest.TabIndex = 8;
+            this.btnManifest.TabIndex = 7;
             this.btnManifest.Text = "...";
             this.btnManifest.UseVisualStyleBackColor = true;
             this.btnManifest.Click += new System.EventHandler(this.SearchManifest);
@@ -217,27 +212,7 @@
             this.txtManifest.Location = new System.Drawing.Point(12, 186);
             this.txtManifest.Name = "txtManifest";
             this.txtManifest.Size = new System.Drawing.Size(437, 23);
-            this.txtManifest.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(293, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 15);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Versão (Não Obrigatório)";
-            // 
-            // txtVersion
-            // 
-            this.txtVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVersion.Location = new System.Drawing.Point(293, 133);
-            this.txtVersion.Name = "txtVersion";
-            this.txtVersion.PlaceholderText = "1.0.0";
-            this.txtVersion.Size = new System.Drawing.Size(186, 23);
-            this.txtVersion.TabIndex = 6;
+            this.txtManifest.TabIndex = 6;
             // 
             // label3
             // 
@@ -309,7 +284,7 @@
             this.btnOpenLocalCompile.Location = new System.Drawing.Point(12, 340);
             this.btnOpenLocalCompile.Name = "btnOpenLocalCompile";
             this.btnOpenLocalCompile.Size = new System.Drawing.Size(171, 23);
-            this.btnOpenLocalCompile.TabIndex = 14;
+            this.btnOpenLocalCompile.TabIndex = 13;
             this.btnOpenLocalCompile.Text = "Abrir Pasta da Compilação";
             this.btnOpenLocalCompile.UseVisualStyleBackColor = true;
             this.btnOpenLocalCompile.Click += new System.EventHandler(this.OpenSavePath);
@@ -320,7 +295,7 @@
             this.btnCompile.Location = new System.Drawing.Point(404, 340);
             this.btnCompile.Name = "btnCompile";
             this.btnCompile.Size = new System.Drawing.Size(75, 23);
-            this.btnCompile.TabIndex = 15;
+            this.btnCompile.TabIndex = 14;
             this.btnCompile.Text = "Compilar";
             this.btnCompile.UseVisualStyleBackColor = true;
             this.btnCompile.Click += new System.EventHandler(this.Compile);
@@ -382,13 +357,10 @@
         private FolderBrowserDialog openFolderSave;
         private Label label3;
         private TextBox txtName;
-        private Label label4;
-        private TextBox txtVersion;
         private Label label5;
         private Button btnManifest;
         private TextBox txtManifest;
         private GroupBox groupBox1;
-        private RadioButton rdbZip;
         private RadioButton rdbSingleFile;
         private RadioButton rdbDll;
         private GroupBox groupBox2;
@@ -396,5 +368,6 @@
         private CheckBox ckbClearCache;
         private OpenFileDialog openFileManifest;
         private ProgressBar pgbStatus;
+        private CheckBox ckbOpenAdmin;
     }
 }

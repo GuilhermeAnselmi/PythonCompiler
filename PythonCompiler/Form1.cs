@@ -34,43 +34,6 @@ namespace PythonCompiler
             txtManifest.Text = openFileManifest.FileName;
         }
 
-        private void Compile(object sender, EventArgs e)
-        {
-            try
-            {
-                Compile compile = new Compile(txtPath.Text, txtLocalSave.Text)
-                {
-                    ClearCache = ckbClearCache.Checked,
-                    NoConsole = ckbNoConsole.Checked,
-                    IsDll = rdbDll.Checked,
-                    IsSingleFile = rdbSingleFile.Checked,
-                    IsZipFile = rdbZip.Checked,
-                };
-                if (txtName.Text != "" && txtName.Text != null) compile.Name = txtName.Text;
-                if (txtVersion.Text != "" && txtVersion.Text != null) compile.Version = txtVersion.Text;
-                if (txtManifest.Text != "" && txtManifest.Text != null) compile.ManifestPath = txtManifest.Text;
-
-                bool valid = compile.Validate();
-
-                if (valid)
-                {
-                    compile.Run();
-
-                    pgbStatus.Value = compile.Status;
-
-                    MessageBox.Show("Sucesso", "Sucesso", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show(compile.Error, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void OpenSavePath(object sender, EventArgs e)
         {
             try
@@ -83,6 +46,80 @@ namespace PythonCompiler
                 else
                 {
                     MessageBox.Show("Local para salvar compilado não encontrado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ManifestAdmin(object sender, EventArgs e)
+        {
+            if (ckbOpenAdmin.Checked)
+            {
+                txtManifest.Text = "";
+                txtManifest.Enabled = false;
+                btnManifest.Enabled = false;
+            }
+            else
+            {
+                txtManifest.Enabled = true;
+                btnManifest.Enabled = true;
+            }
+        }
+
+        private void Compile(object sender, EventArgs e)
+        {
+            Run();
+        }
+
+        private async Task Run()
+        {
+            try
+            {
+                pgbStatus.Value = 0;
+
+                Compile compile = new Compile(txtPath.Text, txtLocalSave.Text)
+                {
+                    OpenAdmin = ckbOpenAdmin.Checked,
+                    ClearCache = ckbClearCache.Checked,
+                    NoConsole = ckbNoConsole.Checked,
+                    IsDll = rdbDll.Checked,
+                    IsSingleFile = rdbSingleFile.Checked,
+                };
+                if (txtName.Text != "" && txtName.Text != null) compile.Name = txtName.Text;
+                if (txtManifest.Text != "" && txtManifest.Text != null) compile.ManifestPath = txtManifest.Text.Replace("/", "\\");
+
+                bool valid = compile.Validate();
+
+                if (valid)
+                {
+                    btnCompile.Enabled = false;
+                    btnPath.Enabled = false;
+                    btnLocalSave.Enabled = false;
+                    btnManifest.Enabled = false;
+
+                    pgbStatus.Value = 5;
+
+                    await compile.VerifyPyInstaller(pgbStatus);
+
+                    pgbStatus.Value = 20;
+
+                    await compile.Run(pgbStatus);
+
+                    btnCompile.Enabled = true;
+                    btnPath.Enabled = true;
+                    btnLocalSave.Enabled = true;
+                    btnManifest.Enabled = true;
+
+                    MessageBox.Show("Sucesso", "Sucesso", MessageBoxButtons.OK);
+
+                    pgbStatus.Value = 0;
+                }
+                else
+                {
+                    MessageBox.Show(compile.Error, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
